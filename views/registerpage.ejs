@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login page</title>
+    <link rel="stylesheet" href="/css/registerpage.css">
+</head>
+
+<body>
+    <div class="container">
+        <section>
+
+            <div class="formsection">
+                <img src="/images/logo.svg" alt="">
+
+                <form action="">
+
+                    <table>
+                        <tr>
+                            <td>
+                                <h2>Welcome!</h2>
+                            </td>
+                        </tr>
+                        <tr class="tablerow">
+                            <td class="label">Username</td>
+                            <td>
+                                <input type="text" name="username" id="username" onkeydown="checkuname()">
+                            </td>
+                            <td>
+                                <span id="unameerror" class="error"></span>
+                            </td>
+                        </tr>
+                        <tr class="tablerow">
+                            <td class="label">E-mail</td>
+                            <td>
+                                <input type="text" name="email" id="email" onkeydown="checkemail()">
+                            </td>
+                            <td>
+                                <span id="emailerror" class="error"></span>
+                            </td>
+                        </tr>
+                        <tr class="tablerow">
+                            <td class="label">Password</td>
+                            <td>
+                                <input type="text" name="password" id="password">
+                            </td>
+                            <td>
+                                <span id="passworderror" class="error"></span>
+                            </td>
+                        </tr>
+                        <tr class="tablerow">
+                            <td class="label">Confirm Password</td>
+                            <td>
+                                <input type="text" name="confirmpass" id="confirmpass">
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <p onclick="myfun(), myfun1()">SIGN-UP</p>
+                            </td>
+                        </tr>
+                    </table>
+
+                    <span>Already have an account? <a href="/login">SIGN-IN</a></span>
+                </form>
+            </div>
+
+        </section>
+    </div>
+
+    <script>
+
+        function myfun() {
+
+            var username = document.getElementById("username").value;
+            var email = document.getElementById("email").value;
+            var password = document.getElementById("password").value;
+            var confirmpass = document.getElementById("confirmpass").value;
+
+            console.log(username)
+            console.log(email)
+            console.log(password)
+
+            if (password == confirmpass && password.length >= 6 && username.length!==0 && email.length!==0) {
+
+                fetch(`data`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        username, email, password
+                    })
+                }).then(res=>res.json()).then(data=>{console.log("datatatatatatat:::::",data)})
+
+                console.log("afterr   first appppppiiii");
+
+                location.assign(`/act?user=${username}`);
+
+            }
+            else if(username.length==0 && email.length==0){
+                document.getElementById('unameerror').innerHTML = "Please enter username!";
+                document.getElementById('emailerror').innerHTML = "Please enter e-mail!";
+                document.getElementById('passworderror').innerHTML = "Please enter password!";
+            }
+            else {
+                alert("Enter correct details")
+            }
+        }
+
+        async function checkuname() {
+            
+            if (username.length == 0) {
+                document.getElementById('unameerror').innerHTML = "Please enter username!"
+                console.log("blank")
+            }
+            
+           
+        }
+
+        async function checkemail() {
+            var datats = await getdata();
+        
+            var email = document.getElementById("email").value;
+            
+            for(i=0;i<datats.length;i++){
+                if(datats[i].email==email){
+                    document.getElementById('emailerror').innerHTML = "E-mail already taken! Please enter another e-mail";
+                    console.log("email aready taken");
+                    break;
+                    
+                }
+                if(datats[i].email!==email){
+                    document.getElementById('emailerror').innerHTML = "";
+
+                   
+                    
+                }
+            }
+            if (email.length == 0) {
+                document.getElementById('emailerror').innerHTML = "Please enter e-mail!"
+                console.log("blank email")
+            }
+           
+        }
+
+        async function myfun1(){
+            var unameerror=document.getElementById('unameerror').innerHTML;
+            var emailerror=document.getElementById('emailerror').innerHTML;
+            console.log(unameerror);
+            console.log(emailerror);
+            if(unameerror!=="" && emailerror!==""){
+                alert("Fill all details");
+            }
+        }
+
+    </script>
+</body>
+
+</html>

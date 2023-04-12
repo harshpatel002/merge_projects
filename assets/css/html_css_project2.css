@@ -1,0 +1,518 @@
+* {
+    box-sizing: border-box;
+}
+
+body{
+    margin: 0px;
+}
+
+.logo{
+    font-family: 'Tilt Prism', cursive;
+    font-size: 3rem;
+    padding-top: 10px;
+   
+}
+
+.container{
+    max-width: 1170px;
+    padding: 0px 16px;
+    margin: 0 auto;
+}
+
+nav{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 12px
+}
+
+.navigationmenu ul{
+    padding-top: 14px;
+    display: flex;
+    list-style: none;
+}
+.navigationmenu li a{
+    padding:25px;
+    text-decoration: none;
+    color: black;
+    font-weight: 500;
+}
+
+.navigationmenu p a{
+    text-decoration: none;
+    padding:15px;
+    color: #1565D8;;
+
+}
+
+.navigationmenu p{
+    border: 2px solid #1565D8;;
+    border-radius: 5px;
+    margin-left: 15px;
+    padding: 10px;
+    
+   
+}
+.navigationmenu{
+    display: flex; 
+    flex-wrap: wrap;
+}
+
+
+
+/* **************************Content of Site**************************** */
+
+/* ***************************Banner of teh Site********************** */
+
+.banner{
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 5rem;
+}
+.banner_content{
+    width: 50%;
+    padding-left: 5%;
+    padding-right: 5%;
+    padding-top: 3%;
+
+}
+
+.banner img{
+    width: 50%;
+    float: right;
+}
+
+.banner_content h1{
+    color: rgb(15, 32, 103);
+    font-size: 3rem;
+}
+
+.banner_content p{
+    color: grey;
+}
+
+.button a{
+    text-decoration: none;
+}
+.button{
+    background-color: rgb(15, 32, 103);
+    width: 40%;
+    padding: 1rem;
+    border-radius: 15px;
+    text-align: center;
+    margin-bottom: 2rem
+}
+
+.button a{
+    color: aliceblue;
+}
+
+.banner i{
+    color: rgb(198, 192, 192);
+}
+
+
+
+
+/* *************************Partners Section******************************* */
+
+
+.partners label{
+    color: rgb(35, 218, 218);
+    font-weight: 800;
+}
+
+.partnerrow1{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.partnerrow1 h2{
+    color: rgb(15, 32, 103);
+    width: 50%;
+    font-size: 2rem;
+}
+
+.partnerrow1 p{
+    color: grey;
+    width: 50%;
+}
+
+.partnerrow2{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+
+
+
+
+
+/* ***********************What we Do Section *************************** */
+
+.whatwedo{
+    margin-bottom: 5rem;
+}
+.whatwedo_row1{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+}
+
+.whatwedo_row1 label{
+    color: rgb(15, 32, 103);
+    width: 50%;
+    font-size: 2rem;
+}
+.whatwedo_row1 span{
+    width: 50%;
+    padding-top: 0.6rem;
+    color: grey;
+    font-size: large;
+}
+
+.whatwedo_row2 {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 4rem;
+    margin: 0 -16px;
+}
+
+.card{
+    width: 33.33%;
+    margin-bottom: 5px;
+    padding: 0 16px;
+}
+
+.card_inner{
+    width: 100%;
+    border: 1px solid grey;
+    border-radius: 10px;
+    padding: 10px;
+    display: flex;
+}
+
+
+
+.card .fa-circle{
+    color:#1565D8;
+}
+
+.card .fa-square{
+    color: orange;
+}
+
+.card .fa-star{
+    color: rgb(15, 32, 103);
+}
+
+.card .fa-shield{
+    color: green;
+}
+
+.card .fa-certificate{
+    color:blue;
+}
+
+.card .fa-diamond{
+    color:red;
+}
+
+.card_content{
+    padding-left: 5px;
+}
+
+.card_content span{
+    font-weight: 600;
+    font-size: large;
+}
+
+
+
+
+/* ********************Portfolio Section*********************** */
+
+.portfolio{
+    margin-bottom: 5rem;
+}
+
+.portfolio_row1{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+}
+
+.go_back_next{
+    margin-top: 10px;
+    display: flex;
+}
+
+.fa-arrow-right{
+    margin-left: 10px;
+}
+
+.portfolio label{
+    color: rgb(35, 218, 218);
+    font-weight: 800;
+}
+
+.portfolio_row1 span{
+    font-size: 2rem;
+}
+
+.portfolio_row2{
+    display: flex;
+    margin: 0 -16px;
+}
+
+.portfolio_inner_card{
+    display: flex;
+    flex-direction: column;
+    border: 1px solid rgba(128, 128, 128, 0.633);
+    border-radius: 0 0 10px 10px;
+    
+}
+.portfolio_card{
+    width: 33.33%;
+    padding: 0 16px;
+}
+
+.portfolio_card img{
+    height: 15rem;
+}
+
+.portfolio_inner_card h3{
+    font-size: 1.3rem;
+}
+
+.portfolio_inner_card p, .portfolio_inner_card h3{
+    padding-left: 4px;
+}
+
+
+
+
+/* ********************Testimonials Section*********************** */
+
+.testimonials{
+    margin-bottom: 2rem;
+}
+
+.testimonial_row1{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+}
+
+/* .go_back_next --> Same as portfolio section */
+
+/* .fa-arrow-right --> Same as portfolio section */
+
+.testimonials label{
+    color: rgb(35, 218, 218);
+    font-weight: 800;
+}
+
+.testimonial_row1 span{
+    font-size: 2rem;
+}
+
+.testimonial_row2{
+    display: flex;
+    margin: 0 -16px;
+}
+
+.testimonial_inner_card{
+    display: flex;
+    flex-direction: column;
+    border: 1px solid rgba(128, 128, 128, 0.633);
+    border-radius: 10px;
+    padding: 14px;
+    
+}
+
+.testimonial_card{
+    width: 50%;
+    padding: 0 16px;
+}
+
+.testimonial_inner_card .profile_pic{
+    display: flex;
+    margin-bottom: 0.7rem;
+}
+
+.testimonial_inner_card .profile_pic img{
+    width: 4rem;
+    height: 4rem;
+}
+
+.name_description{
+    padding-top: 0.8rem;
+    padding-left: 1rem;
+    line-height: 0.5rem;
+}
+
+.name_description span{
+    font-weight: 600;
+    font-size: large;
+}
+
+.name_description p, .review{
+   color: grey;
+}
+
+
+
+
+
+/* ********************Social Media Section*********************** */
+
+.socialmedia{
+    margin-bottom: 5rem;
+    text-align: center;
+    margin-top: 5rem;
+}
+
+.socialmedia_row1{
+    text-align: center;
+    margin-bottom: 2rem;
+    margin-top: 2rem;
+}
+
+.socialmedia label{
+    color: rgb(35, 218, 218);
+    font-weight: 800;
+}
+
+.socialmedia_row1 span{
+    font-size: 2rem;
+    font-weight: 600;
+}
+
+.socialmedia_row2{
+    display: flex;
+    margin: 0 -16px;
+}
+
+.socialmedia_inner_card{
+    display: flex;
+    flex-direction: column;
+    border: 1px solid rgba(128, 128, 128, 0.633);
+    border-radius: 10px;
+    padding: 14px;
+    text-align: center;
+
+}
+
+.socialmedia_card{
+    width: 25%;
+    padding: 0 16px;
+}
+
+.socialmedia_inner_card p{
+    color: grey;
+}
+
+.socialmedia_inner_card i{
+    color: #0278c2;
+}
+
+.socialmedia_inner_card a{
+    text-decoration: none;
+    color: #24a0ed;
+    font-weight: bold;
+}
+
+
+
+
+/* ********************Challenging project Section********************* */
+
+.challengingsection{
+    background-color: #12c9ff;
+}
+
+.challengingproject{
+    text-align: center;
+    padding: 5rem;
+}
+
+.challengingproject h1{
+    font-size: 3rem;
+    color: white;
+}
+
+.challengingproject .callengepra{
+    font-size: 1.2rem;
+    color: rgb(255, 255, 255);
+}
+
+.challengingproject .challengebtn{
+    width: 20%;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    background-color: white;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 3rem;
+    border-radius: 10px;
+}
+
+.challengingproject a{
+    text-decoration: none;
+    color: black;
+    font-size: large;
+    font-weight: bold;
+}
+
+
+
+
+
+/* *************Footer  Section************************* */
+
+
+.footersec2,.socialmedia{
+    display: flex;
+}
+
+footer{
+    color: #b9b9b9;
+    background-color: rgba(3,60,85,255);
+    padding-top: 5rem;
+}
+
+.footersec2 li a{
+    float: inline-start;
+    color: #b9b9b9;
+    text-decoration: none;
+}
+
+.footersec2col{
+    width:25%;
+}
+
+.socialmedia i{
+    padding-right: 10px;
+}
+
+.footersec3 i{
+    color: white;
+    background-color:#3B5AFB;
+    padding:1rem;
+    border-radius: 25px;
+
+}
+
+.footersec3{
+    margin-top: 2rem;
+    padding-bottom: 6rem;
+    text-align: center;
+}
+
+.footersec2 .socialmedia{
+    margin-top: 1rem;
+}

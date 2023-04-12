@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Cube</title>
+    <link rel="stylesheet" href="/css/kukus_cube.css">
+
+</head>
+
+<body>
+    <span id="timer"></span>
+    <div class="container">
+        <table id="table">
+            <tr>
+                <td onclick="myfun()"></td>
+            </tr>
+        </table>
+
+        <table id="count">
+            <tr>
+                <td style="color: black;width: 10px; height: auto; font-size: 50px ;text-align: center;">Count</td> 
+            </tr>
+            <tr>
+                <td style="color: black;width: 10px; height: auto; font-size: 50px;text-align: center;" id="winningcount"></td>
+            </tr>
+        </table>
+    </div>
+
+    <script>
+        var harshcolor = ["Violet", "Blue", "Green", "Yellow", "Orange", "Red", "Purple", "aqua", "fuchsia", "gray", "lime", "maroon", "nav", "olive",
+            "silver", "teal"]
+        var harshc = 2;
+        var harshwincount = 0;
+        document.getElementById("winningcount").innerHTML = harshwincount;
+
+        start(60);
+        function start(harsh){
+            const interval=setInterval(()=>{
+                harsh--;
+                document.getElementById("timer").innerHTML=harsh;
+                if(harsh<=0){
+                    clearInterval(interval);
+                    alert("Total Score:"+harshwincount)
+                    window.location.reload();
+                }
+            },1000)
+        }
+
+        function myfun() {
+            var harshs = "";
+            var harshrandcol = Math.floor(Math.random() * harshc) + 1;
+            var harshrandrow = Math.floor(Math.random() * harshc) + 1;
+            for (let i = 1; i <= harshc; i++) {
+                harshs += "<tr>";
+                for (j = 1; j <= harshc; j++) {
+                    if (harshrandcol == j && harshrandrow == i) {
+
+                        harshs += "<td onclick=myfun() id='(i)+'.'+(j)' style='background-color:" + harshcolor[harshrandrow] + "; opacity:60%'> </td>";
+                        harshwincount++;
+                    }
+                    else {
+                        harshs += "<td  id='(i)+'.'+(j) style='background-color:" + harshcolor[harshrandrow] + ";'> </td>";
+
+                    }
+
+                }
+                harshs += "</tr>";
+            }
+            document.getElementById("winningcount").innerHTML = harshwincount;
+            document.getElementById("table").innerHTML = harshs;
+            if (harshc < 8) {
+                harshc++;
+            }
+            else {
+                return false;
+            }
+        }
+
+    </script>
+
+</body>
+
+</html>

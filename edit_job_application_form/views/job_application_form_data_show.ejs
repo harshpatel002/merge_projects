@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: rgb(250, 217, 176);
+        }
+
+        .pageno {
+            display: inline-block;
+            height: 25px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #892929;
+            text-align: center;
+        }
+
+        .table_header {
+            font-size: 20px;
+            font-weight: bold;
+            color: #892929;
+            /* padding: 10px; */
+        }
+
+        table {
+            /* margin-left: 45px; */
+            width: 100%;
+            text-align: center;
+            background-color: rgb(248, 188, 115);
+        }
+
+        a {
+            text-decoration: none;
+
+        }
+
+        b {
+            color: red;
+            /* font-size: 25px; */
+        }
+    </style>
+</head>
+
+<body>
+    <h1>CANDIDATE DATA</h1>
+    <center>
+        <form action="/search" style="margin-bottom: 25px;" method="get">
+            <input type="text" name="searchbar" id="searchbar" value="<%=harsh%>">
+            <input type="submit" value="GO">
+        </form>
+        <p>
+            Candidate_fname='^', Candidate_lname='%', Candidate_contact='#', Candidate_email='!', Candidate_city='~',
+            Candidate_Dob='-'
+        </p>
+        <p id="searcValue" hidden>
+            <%=harsh%>
+        </p>
+    </center>
+    <table border="2">
+        <tr class="header">
+            <td class="table_header">Multiple Delete</td>
+            <td class="table_header">Candidate ID</td>
+            <td class="table_header">fname</td>
+            <td class="table_header">lname</td>
+            <td class="table_header">Designation</td>
+            <td class="table_header">Email</td>
+            <td class="table_header">Phone-No</td>
+            <td class="table_header">Gender</td>
+            <td class="table_header">Address-1</td>
+            <td class="table_header">Address-2</td>
+            <td class="table_header">City</td>
+            <td class="table_header">State</td>
+            <td class="table_header">Zip-Code</td>
+            <td class="table_header">Relationship Status</td>
+            <td class="table_header">DOB</td>
+            <td class="table_header">Timestamp</td>
+            <td class="table_header">Delete</td>
+            <td class="table_header">Edit</td>
+        </tr>
+        <tbody id="t_body">
+        <% for(i=0;i <data.length;i++){ %>
+                <tr id="<%=data[i].candidate_id%>">
+                    <td>
+                        <input type="checkbox" name="muldel" id="muldel" class="deleteId"
+                            value="<%=data[i].candidate_id%>">
+                    </td>
+                    <td>
+                        <%=data[i].candidate_id%>
+                    </td>
+                    <td>
+                        <%=data[i].candidate_fname%>
+                    </td>
+                    <td>
+                        <%=data[i].candidate_lname%>
+                    </td>
+
+                    <td>
+                        <%=data[i].candidate_designation%>
+                    </td>
+                    <td>
+                        <%=data[i].candidate_email%>
+                    </td>
+                    <td>
+                        <%=data[i].candidate_phone_number%>
+                    </td>
+                    <td>
+                        <%=data[i].candidate_gender%>
+                    </td>
+                    <td>
+                        <%=data[i].candidate_address1%>
+                    </td>
+                    <td>
+                        <%=data[i].candidate_address2%>
+                    </td>
+                    <td>
+                        <%=data[i].candidate_city%>
+                    </td>
+                    <td>
+                        <%=data[i].candidate_state%>
+
+                    </td>
+                    <td>
+                        <%=data[i].candidate_zipcode%>
+                    </td>
+                    <td>
+                        <%=data[i].candidate_relationship_status%>
+                    </td>
+                    <td>
+                        <%=data[i].candidate_dob%>
+                    </td>
+                    <td>
+                        <%=data[i].timestamp%>
+                    </td>
+                    <td>
+
+                        <p onclick="confirmation(`<%=data[i].candidate_id%>`)" style="text-decoration: underline;">
+                            Delete
+                        </p>
+                    </td>
+                    <td>
+
+                        <a href="edit?id2=<%=data[i].candidate_id%>">edit</a>
+                    </td>
+                </tr>
+                <% } %>
+            </tbody>
+
+
+    </table>
+    <p style="margin-left:35%;padding-top:10px;font-size:large;font-weight:bold;
+        text-align:center;width:250px;height:30px;border-radius:5px;background-color:rgb(240, 199, 149);border:2px solid black;"
+        onclick="muldel()">Delete All</p>
+
+    <%for(var i=1;i <=allrecords;i++){%>
+        <%if(page==i){%>
+            <span id="<%=i%>" onclick="pagination(this)">
+                <%=i%>
+            </span>
+            <%}else{%>
+                <span id="<%=i%>" onclick="pagination(this)">
+                    <%=i%>
+                </span>
+                <%}%>
+                    <%}%> <br>
+
+
+
+
+
+                        <script>
+                            async function pagination(e) {
+                                console.log('harsh');
+                                console.log("eeeeeeeeeeeeeeeee", e)
+                                var searchbar = document.getElementById("searcValue").innerHTML
+                                var t_body = document.getElementById("t_body")
+                                let mn = e.id;
+                                let flag = "true"
+                                console.log(mn);
+                                const result = await fetch(`/search?page=${e.id}&ajax=${flag}&searchbar=${searchbar}`);
+                                const res = await result.json();
+                                console.log(res);
+                                t_body.innerHTML = ""
+
+                                res.data.forEach(element => {
+                                    t_body.innerHTML += `
+
+                                <tr>
+                                    <td>
+                                        <input type="checkbox" name="muldel" id="muldel" class="deleteId"
+                                        value=${element.candidate_id}>
+                                    </td>
+                                    <td>
+                                        ${element.candidate_id}
+                                    </td>
+                                    <td>
+                                        ${element.candidate_fname}
+                                    </td>
+                                    <td>
+                                        ${element.candidate_lname}
+                                    </td>
+                                    <td>
+                                        ${element.candidate_designation}
+                                    </td>
+                                    <td>
+                                        ${element.candidate_email}
+                                    </td>
+                                    <td>
+                                        ${element.candidate_phone_number}
+                                    </td>
+                                    <td>
+                                        ${element.candidate_gender}
+                                    </td>
+                                    <td>
+                                        ${element.candidate_address1}
+                                    </td>
+                                    <td>
+                                        ${element.candidate_address2}
+                                    </td>
+                                    <td>
+                                        ${element.candidate_city}
+                                    </td>
+                                    <td>
+                                        ${element.candidate_state}
+                                    </td>
+                                    <td>
+                                        ${element.candidate_zipcode}
+                                    </td>
+                                    <td>
+                                        ${element.candidate_relationship_status}
+                                    </td>
+                                    <td>
+                                        ${element.candidate_dob}
+                                    </td>
+
+                                    <td>
+                                        ${element.timestamp}
+                                    </td>
+                                    <td>
+
+                                        <p onclick="confirmation(${element.candidate_id})" style="text-decoration: underline;">
+                                        Delete
+                                        </p>
+                                    </td>
+                                    <td>
+
+                                        <a href="edit?id2=${element.candidate_id}">edit</a>
+                                    </td>
+                                </tr>`
+                                });
+                            }
+
+                            function confirmation(id) {
+                                console.log("inner id:- " + id)
+                                if (confirm("Are you sure you want to delete the record")) {
+                                    fetch(`/delete?id=${id}`);
+                                    document.getElementById(id).style.display = "none";
+                                }
+                                else {
+                                    alert("Nothing Deleted")
+                                }
+                            }
+
+
+                            async function muldel() {
+                                var checkedvalue = [];
+
+                                var ids = document.getElementsByClassName('deleteId');
+                                for (var i = 0; i < ids.length; i++) {
+                                    if (ids[i].checked) {
+                                        checkedvalue.push(ids[i].value)
+                                    }
+                                }
+
+                                console.log(checkedvalue);
+                                if (confirm("Do you want to delete all selected records?")) {
+                                    if (checkedvalue.length >= 2) {
+
+
+                                        for (let i = 0; i < checkedvalue.length; i++) {
+                                            document.getElementById(`${checkedvalue[i]}`).style.display = "none";
+
+                                        }
+
+                                        const ans = await fetch(`/deleterecord?candidate_id=${checkedvalue}`);
+                                    }
+                                }
+                            }
+
+
+                        </script>
+
+
+
+</body>
+
+</html>

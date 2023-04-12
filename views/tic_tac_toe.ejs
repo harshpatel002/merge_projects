@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic-Tac-Toe Assignment</title>
+    <link rel="stylesheet" href="css/tic_tac_toe.css">
+   
+</head>
+
+<body>
+    <h1>Tic-Tac-Toe Game</h1>
+    <span id="winlose"></span>
+
+    <div class="container">
+        <table>
+            <tr>
+                <td id="1" onclick="harshnorepeat(this);checkwin()"></td>
+                <td id="2" onclick="harshnorepeat(this);checkwin()"></td>
+                <td id="3" onclick="harshnorepeat(this);checkwin()"></td>
+            </tr>
+            <tr>
+                <td id="4" onclick="harshnorepeat(this);checkwin()"></td>
+                <td id="5" onclick="harshnorepeat(this);checkwin()"></td>
+                <td id="6" onclick="harshnorepeat(this);checkwin()"></td>
+            </tr>
+            <tr>
+                <td id="7" onclick="harshnorepeat(this);checkwin()"></td>
+                <td id="8" onclick="harshnorepeat(this);checkwin()"></td>
+                <td id="9" onclick="harshnorepeat(this);checkwin()"></td>
+            </tr>
+
+        </table><br>
+        <table id="count">
+            <tr>
+                <td colspan="2" style="color: bisque;width: 10px; height: auto; font-size: 50px">Count</td>
+            </tr>
+            <tr>
+                <td style="color: bisque; width: 10px; height: auto;font-size: 40px">x</td>
+                <td style="color: bisque; width: 10px; height: auto;font-size: 40px" id="xcount"></td>
+            </tr>
+            <tr>
+                <td style="color: bisque; width: 10px; height: auto;font-size: 40px">o</td>
+                <td style="color: bisque; width: 10px; height: auto;font-size: 40px" id="ycount"></td>
+            </tr>
+            <tr>
+                <td style="color: bisque; width: 10px; height: auto;font-size: 40px">Draw</td>
+                <td style="color: bisque; width: 10px; height: auto;font-size: 40px" id="drawcount"></td>
+            </tr>
+        </table>
+    </div>
+
+
+
+    <script>
+        var harshx = 0;
+        document.getElementById("xcount").innerHTML = harshx;
+        var harshy = 0;
+        document.getElementById("ycount").innerHTML = harshy;
+        var harshdraw = 0;
+        document.getElementById("drawcount").innerHTML = harshdraw;
+
+
+        flagharsh = 0;
+        function harshnorepeat(harsh) {
+            if (flagharsh == 0 && harsh.innerHTML == "") {
+                harsh.innerHTML = "x";
+                harsh.style.color = "red";
+                flagharsh = 1;
+            }
+            else if (harsh.innerHTML == "") {
+                harsh.innerHTML = "o";
+                harsh.style.color = "green";
+                flagharsh = 0;
+            }
+        }
+
+        function resetnull() {
+            document.getElementById("1").innerText = "";
+            document.getElementById("2").innerText = "";
+            document.getElementById("3").innerText = "";
+            document.getElementById("4").innerText = "";
+            document.getElementById("5").innerText = "";
+            document.getElementById("6").innerText = "";
+            document.getElementById("7").innerText = "";
+            document.getElementById("8").innerText = "";
+            document.getElementById("9").innerText = "";
+        }
+        function checkwin() {
+
+            var harsh1, harsh2, harsh3, harsh4, harsh5, harsh6, harsh7, harsh8, harsh9;
+            harsh1 = document.getElementById("1").innerText;
+            harsh2 = document.getElementById("2").innerText;
+            harsh3 = document.getElementById("3").innerText;
+            harsh4 = document.getElementById("4").innerText;
+            harsh5 = document.getElementById("5").innerText;
+            harsh6 = document.getElementById("6").innerText;
+            harsh7 = document.getElementById("7").innerText;
+            harsh8 = document.getElementById("8").innerText;
+            harsh9 = document.getElementById("9").innerText;
+
+
+            // for player x
+
+            if (harsh1 == 'x' && harsh2 == 'x' && harsh3 == 'x') {
+                document.getElementById("winlose").innerHTML = "Player x won";
+                alert('Player x won');
+                harshx++;
+                document.getElementById("xcount").innerHTML = harshx
+                return resetnull();
+            }
+
+            else if (harsh4 == 'x' && harsh5 == 'x' && harsh6 == 'x') {
+                document.getElementById("winlose").innerHTML = "Player x won";
+                window.alert('Player x won');
+                harshx++;
+                document.getElementById("xcount").innerHTML = harshx
+                return resetnull()
+            }
+
+            else if (harsh7 == 'x' && harsh8 == 'x' && harsh9 == 'x') {
+                document.getElementById("winlose").innerHTML = "Player x won";
+                window.alert('Player x won');
+                harshx++;
+                document.getElementById("xcount").innerHTML = harshx
+                return resetnull()
+            }
+
+            else if (harsh1 == 'x' && harsh4 == 'x' && harsh7 == 'x') {
+                document.getElementById("winlose").innerHTML = "Player x won";
+                window.alert('Player x won');
+                harshx++;
+                document.getElementById("xcount").innerHTML = harshx
+                return resetnull()
+            }
+
+            else if (harsh2 == 'x' && harsh5 == 'x' && harsh8 == 'x') {
+                document.getElementById("winlose").innerHTML = "Player x won";
+                window.alert('Player x won');
+                harshx++;
+                document.getElementById("xcount").innerHTML = harshx
+                return resetnull()
+            }
+
+            else if (harsh3 == 'x' && harsh6 == 'x' && harsh9 == 'x') {
+                document.getElementById("winlose").innerHTML = "Player x won";
+                window.alert('Player x won');
+                harshx++;
+                document.getElementById("xcount").innerHTML = harshx
+                return resetnull()
+            }
+
+            else if (harsh1 == 'x' && harsh5 == 'x' && harsh9 == 'x') {
+                document.getElementById("winlose").innerHTML = "Player x won";
+                window.alert('Player x won');
+                harshx++;
+                document.getElementById("xcount").innerHTML = harshx
+                return resetnull()
+            }
+
+            else if (harsh3 == 'x' && harsh5 == 'x' && harsh7 == 'x') {
+                document.getElementById("winlose").innerHTML = "Player x won";
+                window.alert('Player x won');
+                harshx++;
+                document.getElementById("xcount").innerHTML = harshx
+                return resetnull()
+            }
+
+
+            // for player o
+            else if (harsh1 == 'o' && harsh2 == 'o' && harsh3 == 'o') {
+                document.getElementById("winlose").innerHTML = "Player o won";
+                window.alert('Player o won');
+                harshy++;
+                document.getElementById("ycount").innerHTML = harshy;
+                return resetnull()
+            }
+
+            else if (harsh4 == 'o' && harsh5 == 'o' && harsh6 == 'o') {
+                document.getElementById("winlose").innerHTML = "Player o won";
+                window.alert('Player o won');
+                harshy++;
+                document.getElementById("ycount").innerHTML = harshy;
+                return resetnull()
+            }
+
+            else if (harsh7 == 'o' && harsh8 == 'o' && harsh9 == 'o') {
+                document.getElementById("winlose").innerHTML = "Player o won";
+                alert('Player o won');
+                harshy++;
+                document.getElementById("ycount").innerHTML = harshy;
+            }
+
+            else if (harsh1 == 'o' && harsh4 == 'o' && harsh7 == 'o') {
+                document.getElementById("winlose").innerHTML = "Player o won";
+                window.alert('Player o won');
+                harshy++;
+                document.getElementById("ycount").innerHTML = harshy;
+                return resetnull()
+            }
+
+            else if (harsh2 == 'o' && harsh5 == 'o' && harsh8 == 'o') {
+                document.getElementById("winlose").innerHTML = "Player o won";
+                window.alert('Player o won');
+                harshy++;
+                document.getElementById("ycount").innerHTML = harshy;
+                return resetnull()
+            }
+
+            else if (harsh3 == 'o' && harsh6 == 'o' && harsh9 == 'o') {
+                document.getElementById("winlose").innerHTML = "Player o won";
+                window.alert('Player o won');
+                harshy++;
+                document.getElementById("ycount").innerHTML = harshy;
+                return resetnull()
+            }
+
+            else if (harsh1 == 'o' && harsh5 == 'o' && harsh9 == 'o') {
+                document.getElementById("winlose").innerHTML = "Player o won";
+                window.alert('Player o won');
+                harshy++;
+                document.getElementById("ycount").innerHTML = harshy;
+                return resetnull()
+            }
+
+            else if (harsh3 == 'o' && harsh5 == 'o' && harsh7 == 'o') {
+                document.getElementById("winlose").innerHTML = "Player o won";
+                window.alert('Player o won');
+                harshy++;
+                document.getElementById("ycount").innerHTML = harshy;
+                return resetnull()
+            }
+
+            // for draw game
+
+            else if ((harsh1 == 'x' || harsh1 == 'o') && (harsh2 == 'x'
+                || harsh2 == 'o') && (harsh3 == 'x' || harsh3 == 'o') &&
+                (harsh4 == 'x' || harsh4 == 'o') && (harsh5 == 'x' ||
+                    harsh5 == 'o') && (harsh6 == 'x' || harsh6 == 'o') &&
+                (harsh7 == 'x' || harsh7 == 'o') && (harsh8 == 'x' ||
+                    harsh8 == 'o') && (harsh9 == 'x' || harsh9 == 'o')) {
+
+                document.getElementById("winlose").innerHTML = "Draw Game";
+                window.alert('Game Draw');
+                harshdraw++;
+                document.getElementById("drawcount").innerHTML = harshdraw;
+                return resetnull()
+            }
+
+        }
+    </script>
+</body>
+
+</html>

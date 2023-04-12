@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <link rel="stylesheet" href="/css/calculator.css">
+    
+</head>
+
+<body>
+    <h1>Calculator Project</h1>
+    <form calss="form1">
+
+        <table name="table1">
+            <tr>
+                <td colspan="4"><input type="text" name="input1" id="input1"></td>
+            </tr>
+            <tr>
+                <td><input type="button" value="7" onclick="input1.value+='7'"></td>
+                <td><input type="button" value="8" onclick="input1.value+='8'"></td>
+                <td><input type="button" value="9" onclick="input1.value+='9'"></td>
+                <td><input type="button" value="/" onclick="input1.value+='/'"></td>
+            </tr>
+            <tr>
+                <td><input type="button" value="4" onclick="input1.value+='4'"></td>
+                <td><input type="button" value="5" onclick="input1.value+='5'"></td>
+                <td><input type="button" value="6" onclick="input1.value+='6'"></td>
+                <td><input type="button" value="*" onclick="input1.value+='*'"></td>
+            </tr>
+            <tr>
+                <td><input type="button" value="1" onclick="input1.value+='1'"></td>
+                <td><input type="button" value="2" onclick="input1.value+='2'"></td>
+                <td><input type="button" value="3" onclick="input1.value+='3'"></td>
+                <td><input type="button" value="-" onclick="input1.value+='-'"></td>
+            </tr>
+            <tr>
+                <td><input type="button" value="0" onclick="input1.value+='0'"></td>
+                <td><input type="button" value="." onclick="input1.value+='.'"></td>
+                <!-- <td><input type="button" value="=" onclick="input1.value=eval(input1.value) "></td> -->
+                <td><input type="button" value="=" onclick="input1.value=eval(input1.value).toFixed(2) "></td>
+                <!-- <td><input type="button" value="=" onclick="input1.value=Math.round(eval(input1.value)) "></td> -->
+                <td><input type="button" value="+" onclick="input1.value+='+'"></td>
+            </tr>
+            <tr>
+                <td colspan="4"><input type="button" value="RESET" onclick="input1.value=''" class="resetbtn"></td>
+            </tr>
+        </table>
+
+    </form>
+</body>
+
+</html>

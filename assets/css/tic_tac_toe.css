@@ -1,0 +1,35 @@
+* {
+    background-color: rgb(0, 0, 0);
+    margin-left: 50px;
+}
+
+table,
+tr,
+td {
+    font-size: 100px;
+    text-align: center;
+    border: 2px solid rgba(255, 174, 0, 0.884);
+}
+
+td {
+    width: 200px;
+    height: 200px;
+}
+
+h1 {
+    color: rgb(238, 179, 69);
+    text-decoration: underline;
+}
+
+#winlose {
+    color: white;
+    font-size: 25px;
+}
+.container{
+    display: flex;
+}
+#count
+{
+    height:25%;
+    width:25%;
+}

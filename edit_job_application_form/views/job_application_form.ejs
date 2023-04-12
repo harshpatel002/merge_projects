@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Application Form</title>
+
+    <style>
+        * {
+            margin-left: 15px;
+            margin-right: 15px;
+        }
+
+        body {
+            background-color: rgb(250, 217, 176);
+
+        }
+
+        #header {
+            color: #892929;
+        }
+
+        td {
+            padding-bottom: 10px;
+        }
+
+        #header {
+            text-align: center;
+        }
+
+        .container1 {
+            margin-top: 20px;
+            display: flex;
+            flex-direction: row;
+        }
+
+        .container2,
+        .container3,
+        .languages_technologies,
+        .container6,
+        .container7 {
+            justify-content: center;
+            margin-top: 20px;
+            display: flex;
+            flex-direction: row;
+        }
+
+
+        .plussign {
+            margin-left: 40%;
+
+        }
+
+        .plusimg {
+            margin-top: 25px;
+            width: 50px;
+            height: auto;
+        }
+
+        legend {
+            border-radius: 10px;
+            font-weight: bold;
+            background-color: #c2aead;
+            padding: 10px;
+        }
+
+        .label {
+            font-weight: bold;
+        }
+
+        input,
+        select,
+        textarea {
+            border-radius: 5px;
+            /* width: 100%; */
+        }
+
+        fieldset {
+            background-color: rgb(250, 228, 201);
+            border-radius: 25px;
+        }
+
+        .error{
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1 id="header">Job Application Form</h1>
+        <!-- <center>
+            <form action="/form" style="margin-bottom: 25px;">
+                <input type="text" name="searchbar" id="searchbar">
+                <input type="submit" value="GO">
+            </form>
+        </center> -->
+        <form action="/form" method="post" onsubmit="return form_validations()">
+            <!-- Basic  Details -->
+            <fieldset>
+                <legend>Basic-Details</legend>
+                <div class="container1">
+                    <table>
+                        <div class="basic_detail_1">
+                            <tr>
+                                <td class="label">First-Name:</td>
+                                <td><input type="text" name="fname" id="fname"></td>
+                            </tr>
+                            <tr>
+                                <td id="fname_error" class="error" colspan="2"></td>
+                            </tr>
+                            <tr>
+                                <td class="label">Designation:</td>
+                                <td><input type="text" name="designation1" id="designation"></td>
+                            </tr>
+                            <tr>
+                                <td id="designation_error" class="error" colspan="2"></td>
+                            </tr>
+                            <tr>
+                                <td class="label">Email:</td>
+                                <td><input type="text" name="email" id="email"></td>
+                            </tr>
+                            <tr>
+                                <td id="email_error" class="error" colspan="2"></td>
+                            </tr>
+                            
+                            <tr>
+                                <td class="label">Phone-Number:</td>
+                                <td><input type="text" name="phone" id="phone"></td>
+                            </tr>
+                            <tr>
+                                <td id="phone_error" class="error" colspan="2"></td>
+                            </tr>
+                            <tr>
+                                <td class="label">Gender:</td>
+                                <td>
+                                    <input type="radio" name="gender" id="gender" value="male">Male
+                                    <input type="radio" name="gender" id="gender" value="female">Female
+                                    <input type="radio" name="gender" id="gender" value="other">Other
+                                </td>
+                            </tr>
+                            <tr>
+                                <td id="gender_error" class="error" colspan="2"></td>
+                            </tr>
+                            <tr>
+                                <td class="label">Relationship-Status:</td>
+                                <td>
+                                    <select name="relationship_status" id="relationship_status">
+                                        <option value="select">Select</option>
+                                        <%for(var i=0;i<status.length;i++){%>
+                                            <option value="<%=status[i].option_name%>" id="<%=status[i].option_name%>"
+                                                name="<%=status[i].option_name%>">
+                                                <%=status[i].option_name%>
+                                            </option>
+                                            <%}%>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td id="relationship_status_error" class="error" colspan="2"></td>
+                            </tr>
+                            <tr>
+                                <td class="label">Date-Of-Birth:</td>
+                                <td><input type="date" name="dob" id="dob"></td>
+                            </tr>
+                            <tr>
+                                <td id="dob_error" class="error" colspan="2"></td>
+                            </tr>
+                        </div>
+                    </table>
+                    <table>
+                        <div class="basic_detail_2">
+                            <tr>
+                                <td class="label">Last-Name:</td>
+                                <td><input type="text" name="lname" id="lname"></td>
+                            </tr>
+                            <tr>
+                                <td id="lname_error" class="error" colspan="2"></td>
+                            </tr>
+                            <tr>
+                                <td class="label">Address-1:</td>
+                                <td><textarea name="address1" id="address1" cols="30" rows="5"></textarea></td>
+                            </tr>
+                            <tr>
+                                <td id="address1_error" class="error" colspan="2"></td>
+                            </tr>
+                            <tr>
+                                <td class="label">Address-2:</td>
+                                <td><textarea name="address2" id="address2" cols="30" rows="5"></textarea></td>
+                            </tr>
+                            <tr>
+                                <td id="address2_error" class="error" colspan="2"></td>
+                            </tr>
+                            <tr>
+                                <td class="label">State:</td>
+                                <td>
+                                    <select name="state" id="state" onchange="getcity(this)"> 
+                                        <option value="select">Select</option>
+                                        <%for(var i=0;i<state.length;i++){%>
+                                            <option value="<%=state[i].state_id%><%=state[i].state_name%>" id="<%=state[i].state_name%>"
+                                                name="<%=state[i].state_name%>">
+                                                <%=state[i].state_name%>
+                                            </option>
+                                            <%}%>
+
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td id="state_error" class="error" colspan="2"></td>
+                            </tr>
+                            <tr>
+                                <td class="label">City:</td>
+                                <td><select name="city" id="selectcity"></select></td>
+                                
+                            </tr>
+                            <tr>
+                                <td class="label">Zip-Code:</td>
+                                <td><input type="text" name="zipcode" id="zipcode"></td>
+                            </tr>
+                            <tr>
+                                <td id="zipcode_error" class="error" colspan="2"></td>
+                            </tr>
+
+                        </div>
+                    </table>
+
+                </div>
+            </fieldset>
+
+
+            <!-- Education Details -->
+            <fieldset style="margin-top:25px;">
+                <legend>Education Details</legend>
+                <div class="container2">
+                    <table>
+                        <tr>
+                            <td class="label">Course:</td>
+                            <td>
+                                <select name="course" id="course">
+                                    <%for(var i=0;i<course.length;i++){%>
+                                        <option value="<%=course[i].option_name%>" id="<%=course[i].option_name%>"
+                                            name="<%=course[i].option_name%>">
+                                            <%=course[i].option_name%>
+                                        </option>
+                                        <%}%>
+
+                                </select>
+                            </td>
+                        </tr>
+                    </table>
+                    <table>
+                        <tr>
+                            <td class="label">Board:</td>
+                            <td><input type="text" name="board" id="board"></td>
+                        </tr>
+                    </table>
+                    <table>
+                        <tr>
+                            <td class="label">Passing-year:</td>
+                            <td><input type="text" name="passing_year" id="passing_year"></td>
+                        </tr>
+                    </table>
+
+                    <table>
+                        <tr>
+                            <td class="label">Percentage:</td>
+                            <td><input type="text" name="percentage" id="percentage"></td>
+                        </tr>
+                    </table>
+                </div>
+                <p id="p1"></p>
+                <p id="p2"></p>
+                <p id="p3"></p>
+                <p id="p4"></p>
+
+                <div class="plussign">
+                    <!-- <img src="add.png" alt="" class="plusimg" onclick="addeducation()"> -->
+                    <input type="button" value="+" style="width:50px;height:50px; font-size: 40px;text-align: center;"
+                        onclick="addeducation()">
+                </div>
+            </fieldset>
+
+
+
+            <!-- Work Experience -->
+            <fieldset style="margin-top:25px;">
+                <legend>Work Experience</legend>
+                <div class="container3">
+                    <table>
+                        <tr>
+                            <td class="label">Company Name:</td>
+                            <td><input type="text" name="companyname" id="companyname"></td>
+                        </tr>
+                    </table>
+
+                    <table>
+                        <tr>
+                            <td class="label">Designation:</td>
+                            <td><input type="text" name="designation" id="designation"></td>
+                        </tr>
+                    </table>
+
+                    <table>
+                        <tr>
+                            <td class="label">From:</td>
+                            <td><input type="date" name="from" id="from"></td>
+                        </tr>
+                    </table>
+                    <table>
+                        <tr>
+                            <td class="label">To:</td>
+                            <td><input type="date" name="to" id="to"></td>
+                        </tr>
+                    </table>
+
+                </div>
+                <p id="p5"></p>
+                <p id="p6"></p>
+                <p id="p7"></p>
+                <div class="plussign">
+                    <!-- <img src="add.png" alt="" class="plusimg" onclick="addworkexperience()"> -->
+                    <input type="button" value="+" style="width:50px;height:50px; font-size: 40px;text-align: center;"
+                        onclick="addworkexperience()">
+                </div>
+
+            </fieldset>
+
+            <div class="languages_technologies">
+                <!-- Language Known -->
+                <fieldset style="margin-top:25px;">
+                    <legend>Language Known</legend>
+                    <div class="container4">
+                        <table>
+                            <%for(i=0;i<language.length;i++){%>
+
+
+                                <tr>
+                                    <td>
+                                        <%=language[i].option_name%><input type="checkbox" name="language"
+                                                value="<%=language[i].option_name%>">
+                                    </td>
+                                    <td>Read<input type="checkbox" name="read"   value="<%=language[i].option_name%>"></td>
+                                    <td>Write<input type="checkbox" name="write"  value="<%=language[i].option_name%>"></td>
+                                    <td>Speak<input type="checkbox" name="speak" value="<%=language[i].option_name%>"></td>
+                                </tr>
+                                <%}%>
+
+                        </table>
+
+                    </div>
+
+                </fieldset>
+
+
+                <!-- Technologies Known -->
+                <fieldset style="margin-top:25px;">
+                    <legend>Technologies Known</legend>
+                    <div class="container5">
+                        <table>
+
+                            <%for(i=0;i<technology.length;i++){%>
+
+                                <tr>
+                                    <td>
+                                        <%=technology[i].option_name%><input type="checkbox" name="technology"
+                                                value="<%=technology[i].option_name%>"
+                                                id="<%=technology[i].option_name%>">
+                                    </td>
+                                    <td>Beginner<input type="radio" name="technologyknown<%=technology[i].option_name%>"value="beginner" id="beginner">
+                                    </td>
+                                    <td>Mediator<input type="radio" name="technologyknown<%=technology[i].option_name%>"value="mediator" id="mediator">
+                                    </td>
+                                    <td>Expert<input type="radio" name="technologyknown<%=technology[i].option_name%>"value="expert" id="expert">
+                                    </td>
+                                </tr>
+
+
+                                <%}%>
+                        </table>
+
+                    </div>
+
+                </fieldset>
+
+            </div>
+
+
+            <!-- Reference Contact -->
+            <fieldset style="margin-top:25px;">
+                <legend>Reference Contact</legend>
+                <div class="container6">
+                    <table>
+                        <div class="reference_contact_1">
+                            <tr>
+                                <td class="label">Name:</td>
+                                <td><input type="text" name="reference_name" id="reference_name"></td>
+                            </tr>
+
+                        </div>
+                    </table>
+                    <table>
+                        <div class="reference_contact_2">
+                            <tr>
+                                <td class="label">Contact:</td>
+                                <td><input type="text" name="reference_contact" id="reference_contact"></td>
+                            </tr>
+
+                        </div>
+                    </table>
+
+                    <table>
+                        <div class="reference_contact_3">
+                            <tr>
+                                <td class="label">Relation:</td>
+                                <td><input type="text" name="reference_relation" id="reference_relation"></td>
+                            </tr>
+
+                        </div>
+                    </table>
+
+                </div>
+                <div class="container6">
+                    <table>
+                        <div class="reference_contact_1">
+                            <tr>
+                                <td class="label">Name:</td>
+                                <td><input type="text" name="reference_name" id="reference_name"></td>
+                            </tr>
+
+                        </div>
+                    </table>
+                    <table>
+                        <div class="reference_contact_2">
+                            <tr>
+                                <td class="label">Contact:</td>
+                                <td><input type="text" name="reference_contact" id="reference_contact"></td>
+                            </tr>
+
+                        </div>
+                    </table>
+
+                    <table>
+                        <div class="reference_contact_3">
+                            <tr>
+                                <td class="label">Relation:</td>
+                                <td><input type="text" name="reference_relation" id="reference_relation"></td>
+                            </tr>
+
+                        </div>
+                    </table>
+
+                </div>
+
+
+
+            </fieldset>
+
+
+
+            <!-- Preferences -->
+            <fieldset style="margin-bottom:50px;margin-top:25px;">
+                <legend>Preferences</legend>
+                <div class="container7">
+                    <table>
+                        <div class="preference_1">
+                            <tr>
+                                <td class="label">Prefered location</td>
+
+                                <td class="label">
+                                    <select name="prefered_location" id="prefered_location">
+                                        <%for(var i=0;i<prefered_location.length;i++){%>
+                                            <option value="<%=prefered_location[i].option_name%>"
+                                                id="<%=prefered_location[i].option_name%>"
+                                                name="<%=prefered_location[i].option_name%>">
+                                                <%=prefered_location[i].option_name%>
+                                            </option>
+                                            <%}%>
+                                    </select>
+                                </td>
+
+                            </tr>
+
+                        </div>
+                    </table>
+                    <table>
+                        <div class="reference_2">
+                            <tr>
+                                <td class="label">Notice-Period:</td>
+                                <td><input type="text" name="notice_period" id="notice_period"></td>
+                            </tr>
+                            <tr>
+                                <td class="label">Expected CTC:</td>
+                                <td><input type="text" name="expected_ctc" id="expected_ctc"></td>
+                            </tr>
+                            <tr>
+                                <td class="label">Current CTC:</td>
+                                <td><input type="text" name="current_ctc" id="current_ctc"></td>
+                            </tr>
+
+                        </div>
+                    </table>
+
+                    <table>
+                        <div class="preference_3">
+                            <tr>
+                                <td class="label">Department</td>
+
+                                <td class="label">
+                                    <select name="prefered_department" id="prefered_department">
+                                        <%for(var i=0;i<prefered_department.length;i++){%>
+                                            <option value="<%=prefered_department[i].option_name%>"
+                                                id="<%=prefered_department[i].option_name%>"
+                                                name="<%=prefered_department[i].option_name%>">
+                                                <%=prefered_department[i].option_name%>
+                                            </option>
+                                            <%}%>
+
+                                    </select>
+                                </td>
+
+                            </tr>
+
+                        </div>
+                    </table>
+
+                </div>
+            </fieldset>
+
+            <center>
+                <input type="submit" value="SUBMIT"
+                    style="text-align: center; width: 40%; height:50px; margin-bottom: 50px; border-radius: 25px;font-size:larger;font-weight: bold;">
+            </center>
+        </form>
+    </div>
+    <script>
+        function form_validations(){
+            var fname=document.getElementById('fname').value;
+            var lname=document.getElementById('lname').value;
+            var designation=document.getElementById('designation').value;
+            var address1=document.getElementById('address1').value;
+            var address2=document.getElementById('address2').value;
+            var phone=document.getElementById('phone').value;
+            var zipcode=document.getElementById('zipcode').value
+            var gender=document.getElementById('gender').checked;
+            var relationship_status=document.getElementById('relationship_status').value;
+            var state=document.getElementById('state').value;
+            var dob=document.getElementById('dob').value;
+            var email=document.getElementById('email').value;
+            var email_validRegex = /^[a-zA-Z0-9.!#$%&'+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)$/;
+
+            if(fname.trim()=='' ||!isNaN(fname)){
+                document.getElementById('fname_error').innerHTML="*Enter Valid First-Name";
+                
+            }
+            
+            if(lname.trim()=='' || !isNaN(lname)){
+                document.getElementById('lname_error').innerHTML="*Enter Valid Last-Name";
+            }
+            
+            if(designation.trim()==''){
+                document.getElementById('designation_error').innerHTML="*Please enter something in Designation field";
+            }
+            
+            if(address1.trim()==''){
+                document.getElementById('address1_error').innerHTML="*Please enter something in Address-1 field";
+            }
+            
+            if(address2.trim()==''){
+                document.getElementById('address2_error').innerHTML="*Please enter something in Address-2 field";
+            }
+
+            if(phone.trim()=='' || isNaN(phone)){
+                document.getElementById('phone_error').innerHTML="*Please enter something in Phone-Number field";
+            }
+            
+            if(gender==false){
+                document.getElementById('gender_error').innerHTML="*Please select any one gender";      
+            }
+            
+            if(relationship_status=='select'){
+                document.getElementById('relationship_status_error').innerHTML="*Select any one from dropdown list";
+            }
+
+            if(state=='select'){
+                document.getElementById('state_error').innerHTML="*Select any one state from dropdown list";
+            }
+
+            if(!email.match(email_validRegex)){
+                document.getElementById('email_error').innerHTML="*Please enter valid E-Mail";
+            }
+
+            if(dob==''){
+                document.getElementById('dob_error').innerHTML="Please select your Date-Of-Birth";
+
+            }
+
+            if(zipcode.trim()=='' || isNaN(zipcode)){
+                document.getElementById('zipcode_error').innerHTML="*Please enter something in Zip-Code field";
+                return false;
+                
+            }
+            
+            
+
+        }
+
+
+        var harsha = "";
+        var harshb = "";
+        var harshclk1 = 1;
+        var harshclk2 = 1;
+
+        function addeducation() {
+            if (harshclk1 == 1) {
+                harsha = '<div class="container2"> <table> <tr> <td class="label">Course:</td> <td> <select name="course" id="course"> <%for(var i=0;i<course.length;i++){%> <option value="<%=course[i].option_name%>" id="<%=course[i].option_name%>" name="<%=course[i].option_name%>"><%=course[i].option_name%></option> <%}%> </select> </td> </tr> </table> <table> <tr> <td class="label">Board:</td> <td><input type="text" name="board" id="board"></td> </tr> </table> <table> <tr> <td class="label">Passing-year:</td> <td><input type="text" name="passing_year" id="passing_year"></td> </tr> </table> <table> <tr> <td class="label">Percentage:</td> <td><input type="text" name="percentage" id="percentage"></td> </tr> </table> </div>';
+                document.getElementById('p1').innerHTML = harsha;
+                // harshclk1++;
+            }
+            if (harshclk1 == 2) {
+                harsha = '<div class="container2"> <table> <tr> <td class="label">Course:</td> <td> <select name="course" id="course"> <%for(var i=0;i<course.length;i++){%> <option value="<%=course[i].option_name%>" id="<%=course[i].option_name%>" name="<%=course[i].option_name%>"><%=course[i].option_name%></option> <%}%> </select> </td> </tr> </table> <table> <tr> <td class="label">Board:</td> <td><input type="text" name="board" id="board"></td> </tr> </table> <table> <tr> <td class="label">Passing-year:</td> <td><input type="text" name="passing_year" id="passing_year"></td> </tr> </table> <table> <tr> <td class="label">Percentage:</td> <td><input type="text" name="percentage" id="percentage"></td> </tr> </table> </div>';
+                document.getElementById('p2').innerHTML = harsha;
+                // harshclk1++;
+            }
+            if (harshclk1 == 3) {
+                harsha = '<div class="container2"> <table> <tr> <td class="label">Course:</td> <td> <select name="course" id="course"> <%for(var i=0;i<course.length;i++){%> <option value="<%=course[i].option_name%>" id="<%=course[i].option_name%>" name="<%=course[i].option_name%>"><%=course[i].option_name%></option> <%}%> </select> </td> </tr> </table> <table> <tr> <td class="label">Board:</td> <td><input type="text" name="board" id="board"></td> </tr> </table> <table> <tr> <td class="label">Passing-year:</td> <td><input type="text" name="passing_year" id="passing_year"></td> </tr> </table> <table> <tr> <td class="label">Percentage:</td> <td><input type="text" name="percentage" id="percentage"></td> </tr> </table> </div>';
+                document.getElementById('p3').innerHTML = harsha;
+                // harshclk1++;
+            }
+            if (harshclk1 == 4) {
+                harsha = '<div class="container2"> <table> <tr> <td class="label">Course:</td> <td> <select name="course" id="course"> <%for(var i=0;i<course.length;i++){%> <option value="<%=course[i].option_name%>" id="<%=course[i].option_name%>" name="<%=course[i].option_name%>"><%=course[i].option_name%></option> <%}%> </select> </td> </tr> </table> <table> <tr> <td class="label">Board:</td> <td><input type="text" name="board" id="board"></td> </tr> </table> <table> <tr> <td class="label">Passing-year:</td> <td><input type="text" name="passing_year" id="passing_year"></td> </tr> </table> <table> <tr> <td class="label">Percentage:</td> <td><input type="text" name="percentage" id="percentage"></td> </tr> </table> </div>';
+                document.getElementById('p4').innerHTML = harsha;
+                // harshclk1++;
+            }
+
+            // else {
+            //     return false;
+            // }
+            harshclk1 = harshclk1 + 1
+
+
+        }
+
+
+        function addworkexperience() {
+            if (harshclk2 == 1) {
+                harshb = '<div class="container3"> <table> <!-- <div class="workexperience_1"> --> <tr> <td class="label">Company Name:</td> <td><input type="text" name="companyname" id="companyname"></td> </tr> <!-- </div> --> </table> <table> <!-- <div class="workexperience_2"> --> <tr> <td class="label">Designation:</td> <td><input type="text" name="designation" id="designation"></td> </tr> <!-- </div> --> </table> <table> <!-- <div class="workexperience_3"> --> <tr> <td class="label">From:</td> <td><input type="date" name="from" id="from"></td> </tr> <!-- </div> --> </table> <table> <!-- <div class="workexperience_4"> --> <tr> <td class="label">To:</td> <td><input type="date" name="to" id="to"></td> </tr> <!-- </div> --> </table> </div>';
+                document.getElementById('p5').innerHTML = harshb;
+
+            }
+            if (harshclk2 == 2) {
+                harshb = '<div class="container3"> <table> <!-- <div class="workexperience_1"> --> <tr> <td class="label">Company Name:</td> <td><input type="text" name="companyname" id="companyname"></td> </tr> <!-- </div> --> </table> <table> <!-- <div class="workexperience_2"> --> <tr> <td class="label">Designation:</td> <td><input type="text" name="designation" id="designation"></td> </tr> <!-- </div> --> </table> <table> <!-- <div class="workexperience_3"> --> <tr> <td class="label">From:</td> <td><input type="date" name="from" id="from"></td> </tr> <!-- </div> --> </table> <table> <!-- <div class="workexperience_4"> --> <tr> <td class="label">To:</td> <td><input type="date" name="to" id="to"></td> </tr> <!-- </div> --> </table> </div>';
+                document.getElementById('p6').innerHTML = harshb;
+
+            }
+            if (harshclk2 == 3) {
+                harshb = '<div class="container3"> <table> <!-- <div class="workexperience_1"> --> <tr> <td class="label">Company Name:</td> <td><input type="text" name="companyname" id="companyname"></td> </tr> <!-- </div> --> </table> <table> <!-- <div class="workexperience_2"> --> <tr> <td class="label">Designation:</td> <td><input type="text" name="designation" id="designation"></td> </tr> <!-- </div> --> </table> <table> <!-- <div class="workexperience_3"> --> <tr> <td class="label">From:</td> <td><input type="date" name="from" id="from"></td> </tr> <!-- </div> --> </table> <table> <!-- <div class="workexperience_4"> --> <tr> <td class="label">To:</td> <td><input type="date" name="to" id="to"></td> </tr> <!-- </div> --> </table> </div>';
+                document.getElementById('p7').innerHTML = harshb;
+
+            }
+            harshclk2 = harshclk2 + 1;
+
+
+        }
+
+
+        async function getcity(state){
+
+            const answer=await fetch(`http://localhost:5011/getcity?stateid=${state.value}`);
+            const data=await answer.json();
+            var selectcity=document.getElementById('selectcity');
+            selectcity.innerHTML="";
+            for(let i=0;i<data.length;i++){
+                const option = new Option(data[i].city_name,data[i].city_name);
+                selectcity.add(option);
+            }
+        }
+
+
+        
+
+    </script>
+</body>
+
+</html>

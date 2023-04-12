@@ -1,0 +1,33 @@
+body {
+    text-align: center;
+    background-color: rgb(36 9 56);
+    color: #ffe100;
+}
+
+table {
+    border: 2px solid green;
+    border-radius: 10px;
+    padding: 1rem;
+    margin-left: auto;
+    margin-right: auto;
+    /* margin-top: 15%; */
+}
+
+td {
+    padding: 0.5rem;
+}
+
+td input {
+
+    border-bottom: 3px solid purple;
+    border-right: 3px solid purple;
+    background-color: rgb(61, 23, 89);
+    color: #ffe100;
+    padding: 1rem;
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+.resetbtn{
+    width: 100%;
+}

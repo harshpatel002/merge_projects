@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login page</title>
+    <link rel="stylesheet" href="/css/welcomepage.css">
+</head>
+
+<body>
+
+    <div class="container">
+        <section class="welcome">
+            <form action="/logout" method="post">
+                <h1>Welcome <%=tokenData.username%>
+                </h1>
+                <input type="submit" value="Logout">
+            </form>
+        </section>
+        <section class="projects">
+
+            <div class="card">
+                <div class="innercard" onclick="tic_tac_toe()">
+                    <img src="/images/tic_tac_toe.png" alt="">
+                    <h2>Tic-Tac-Toe</h2>
+                </div> 
+            </div>
+
+            <div class="card">
+                <div class="innercard" onclick="kukus_cube()">
+                    <img src="/images/kukus_cube.png" alt="">
+                    <h2>Kuku's Cube</h2>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="innercard" onclick="calculator()">
+                    <img src="/images/calculator.png" alt="">
+                    <h2>Calculator</h2>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="innercard" onclick="html_css_project1()">
+                    <img src="/images/html_css_project1.png" alt="">
+                    <h2>HTML/CSS Project1</h2>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="innercard" onclick="html_css_project2()">
+                    <img src="/images/html_css_project2.png" alt="">
+                    <h2>HTML/CSS Project2</h2>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="innercard" onclick="job_application_form()">
+                    <img src="/images/job_application_form.png" alt="">
+                    <h2>Job Application Form (Edit,Delete,Search)</h2>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="innercard" onclick="edit_add_data_database()">
+                    <img src="/images/edit_add_data_database.png" alt="">
+                    <h2>Edit Add Data Database</h2>
+                </div>
+            </div>
+
+        </section>
+    </div>
+
+
+    <script>
+
+        function tic_tac_toe(){
+            location.assign(`/tic_tac_toe`)
+        }
+
+        function kukus_cube(){
+            
+            location.assign(`/kukus_cube`)
+        }
+
+        function calculator(){
+            
+            location.assign(`/calculator`)
+        }
+
+        function html_css_project1(){
+            
+            location.assign(`/html_css_project1`)
+        }
+
+        function html_css_project2(){
+            
+            location.assign(`/html_css_project2`)
+        }
+
+        function job_application_form(){
+            
+            location.assign(`http://localhost:5011/form`)
+        }
+
+        function edit_add_data_database(){
+            
+            location.assign(`http://localhost:9091/table`)
+        }
+
+
+
+    </script>
+
+
+</body>
+
+</html>
